@@ -61,11 +61,3 @@ class Solution {
 
 // https://leetcode.com/problems/merge-sorted-array/description/
 
-// Solution explanation:
-
-// 1. Initialize three pointers, i, j, and k, pointing to the last elements of nums1 and nums2 respectively. i and j will iterate through the arrays in reverse order, while k will iterate through nums1 in reverse order.
-// 2. Compare the last elements of nums1 and nums2. If nums1[i] is greater than nums2[j], move nums1[i] to nums1[k] and decrement both i and k. Otherwise, move nums2[j] to nums1[k] and decrement both j and k.
-// 3. Repeat step 2 until either i or j reaches the beginning of the array.
-// 4. If j is still greater than or equal to 0, move all the remaining elements of nums2 to nums1 in reverse order.
-// 5. The final sorted array will be stored in nums1.
-// 6. The time complexity of this solution is O(m + n) because we iterate through both arrays once. The space complexity is O(1) because we only use a constant amount of additional space to store the pointers and temporary variables.

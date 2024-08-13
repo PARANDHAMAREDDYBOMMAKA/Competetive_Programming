@@ -46,10 +46,3 @@ var chunk = function (arr, size) {
   return _.chunk(arr, size);
 };
 
-// Solution Expalnation:
-
-// 1. We use lodash's _.chunk function to solve this problem.
-// 2. The function takes two arguments: the array arr and the chunk size size.
-// 3. It returns a new array that contains the original elements of arr split into subarrays each of length size.
-// 4. If the length of the last subarray is less than size, it will contain only the remaining elements.
-// 5. The solution handles edge cases such as an empty array or size greater than the length

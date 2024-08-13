@@ -36,7 +36,6 @@
 
 import java.util.*;
 import java.util.stream.IntStream;
-import java.io.*;
 class Solution {
     public boolean gcdSort(int[] nums) {
         GCDSorter sorter=new GCDSorter();

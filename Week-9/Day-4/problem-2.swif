@@ -1,0 +1,52 @@
+class Solution {
+    func shortestPathAllKeys(_ grid: [String]) -> Int {
+        let m = grid.count
+        let n = grid[0].count
+        let keyCount = grid.flatMap { $0 }.filter { $0.isLowercase }.count
+        var keysFound = 0
+        var queue = [(Int, Int, Int)]()
+        var seen = Set<String>()
+        var start = (-1, -1)
+        
+        for i in 0..<m {
+            for j in 0..<n {
+                if grid[i][j] == "@" {
+                    start = (i, j)
+                }
+            }
+        }
+        
+        queue.append((start.0, start.1, 0))
+        seen.insert("\(start.0)-\(start.1)-0")
+        
+        let directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+        
+        while !queue.isEmpty {
+            let (i, j, keys) = queue.removeFirst()
+            if keys == (1 << keyCount) - 1 {
+                return steps
+            }
+            
+            for (di, dj) in directions {
+                let ni = i + di, nj = j + dj
+                if ni >= 0 && ni < m && nj >= 0 && nj < n {
+                    let char = grid[ni][nj]
+                    if char == "#" { continue }
+                    
+                    var newKeys = keys
+                    if char.isLowercase {
+                        newKeys |= (1 << (char.asciiValue! - 97))
+                    }
+                    
+                    let state = "\(ni)-\(nj)-\(newKeys)"
+                    if !seen.contains(state) {
+                        seen.insert(state)
+                        queue.append((ni, nj, newKeys))
+                    }
+                }
+            }
+        }
+        
+        return -1
+    }
+}
